@@ -7,7 +7,6 @@ class Queen:
     def __init__(self, n):
         self.n = n
         self.pos = [None] * n
-        self.pos[0] = randint(0, self.n-1)
         self.pos_used = []
         for i in range(n):
             self.pos_used.append([])
@@ -43,7 +42,7 @@ class Queen:
                 else:
                     return self.create(i)
             else:
-                if i == 1:
+                if i == 0:
                     print "There is not a way to put them properly."
                     break
                 else:
@@ -51,7 +50,7 @@ class Queen:
                     return self.create(i-1)
 
     def gen_pic(self):
-        i = 1
+        i = 0
         self.create(i)
         print self.pos
         order = [None]*self.n
@@ -66,5 +65,5 @@ class Queen:
             print  ' '
 
 if __name__ == "__main__":
-    queen = Queen(10)
+    queen = Queen(int(sys.argv[1]))
     queen.gen_pic()
